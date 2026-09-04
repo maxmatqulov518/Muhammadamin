@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Jamoa kartochkalari</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: #0e0e1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+  }
+  .card {
+    width: 230px;
+    background: #171727;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    border: 1px solid #262638;
+  }
+  .avatar-wrap {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+  }
+  .avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #171727;
+  }
+
+
+  .name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .role {
+    font-size: 12px;
+    color: #7c5cff;
+    margin-bottom: 10px;
+  }
+  .desc {
+    font-size: 12px;
+    color: #8a8aa3;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    min-height: 55px;
+  }
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #262638;
+    padding-top: 14px;
+    margin-bottom: 14px;
+  }
+  .stat-num {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .icons span {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #23233a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="avatar-wrap ring1">
+    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Aziz Mahmudov">
+  </div>
+  <div class="name">Aziz Mahmudov</div>
+  <div class="role">Frontend dasturchi</div>
+  <div class="desc">React va CSS bo'yicha 5 yillik tajriba. Interfeys dizayniga qiziqadi.</div>
+  <div class="stats">
+    <div><div class="stat-num">48</div></div>
+    <div><div class="stat-num">1.2k</div></div>
+    <div><div class="stat-num">96%</div></div>
+  </div>
+  <div class="icons">
+    <span>in</span>
+    <span>🐙</span>
+    <span>✈️</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="avatar-wrap ring2">
+    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Zilola Karimova">
+  </div>
+  <div class="name">Zilola Karimova</div>
+  <div class="role">UI/UX dizayner</div>
+  <div class="desc">Foydalanuvchi tajribasi va prototiplash bo'yicha mutaxassis.</div>
+  <div class="stats">
+    <div><div class="stat-num">63</div></div>
+    <div><div class="stat-num">2.4k</div></div>
+    <div><div class="stat-num">99%</div></div>
+  </div>
+  <div class="icons">
+    <span>in</span>
+    <span>🎨</span>
+    <span>✈️</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="avatar-wrap ring3">
+    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Sardor Rasulov">
+  </div>
+  <div class="name">Sardor Rasulov</div>
+  <div class="role">Backend dasturchi</div>
+  <div class="desc">Node.js va ma'lumotlar bazasi arxitekturasi bilan ishlaydi.</div>
+  <div class="stats">
+    <div><div class="stat-num">37</div></div>
+    <div><div class="stat-num">890</div></div>
+    <div><div class="stat-num">94%</div></div>
+  </div>
+  <div class="icons">
+    <span>in</span>
+    <span>🐙</span>
+    <span>✈️</span>
+  </div>
+</div>
+
+</body>
+</html>

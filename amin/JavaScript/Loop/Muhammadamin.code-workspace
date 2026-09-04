@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "Muhammadamin",
+			"path": "../../.."
+		},
+		{
+			"name": "JavaScript",
+			"path": "../../../../JavaScript"
+		},
+		{
+			"name": "m.amin0711",
+			"path": "../../../../m.amin0711"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Muhammadamin"
+	}
+}

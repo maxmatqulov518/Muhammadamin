@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, html {
+            margin: 0;
+            padding: 0;
+        }
+        .div-class {
+            display: none;
+        }
+        .div-class2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="tugma1()">IT Teacher</button>
+        <button onclick="tugma2()">English Teacher</button>
+    </div>
+    <div id="btn-div" class="div-class">
+        <h1>1-div</h1>
+
+        <div id="btn-div2" class="div-class2">
+            <h1>2-div</h1>
+        </div>
+    </div>
+
+    <script>
+        let btn1Div = document.getElementById("btn-div")
+        let btn2Div = document.getElementById("btn-div2")
+
+        function tugma1(){
+            btn1Div.classList.remove("div-class")
+            btn2Div.classList.add("div-class2")
+        }
+        function tugma2(){
+            btn1Div.classList.add("div-class")
+            btn2Div.classList.remove("div-class2")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>mahmatquloff</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .card {
+    position: relative;
+    width: 340px;
+    background: #fff;
+    border: 3px solid #111;
+    border-radius: 10px;
+    padding: 28px 30px 22px;
+    margin-top: 200px;
+        box-shadow: 3px 3px 0 #111;
+
+  }
+  .card::after {
+    position: absolute;
+    border-radius: 14px;
+    background: #111;
+    
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 22px;
+    margin: 0 0 22px;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .card-1 { margin-bottom: 16px; }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 2px solid #111;
+    border-radius: 4px;
+    outline: none;
+    background: #fff;
+  }
+
+  input::placeholder { color: #aaa; }
+  input:focus { background: #fff8e7; }
+
+  .signin {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px;
+    font-family: inherit;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #fff;
+    background: #f56565;
+    border: 2px solid #111;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 #111;
+    transition: transform 0.05s ease;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #333;
+    margin-left: 79px;
+  }
+
+
+  .buttonchalar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .buttonchalar button {
+    width: 46px;
+    height: 46px;
+    border: 2px solid #111;
+    border-radius: 4px;
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 13px;
+  }
+  .footer a {
+    color: #111;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+    <div class="card">
+      <h1>LOGIN</h1>
+    <div class="card-1">
+      <label for="email">EMAIL</label>
+      <input id="email" type="email" placeholder="your@email.com">
+    </div>
+    <div class="field">
+      <label class="password">PASSWORD</label>
+      <input class="password" type="password" placeholder="•••••••">
+    </div>
+    <button type="submit" class="signin">SIGN IN</button>
+        <div class="buttonchalar">
+      <button type="button" aria-label="Google">G</button>
+      <button type="button" aria-label="Facebook">F</button>
+      <button type="button" aria-label="X">X</button>
+    </div>
+    <div class="footer">Don't have an account? <a href="#">Sign up</a></div>
+    </div>
+</body>
+</html>

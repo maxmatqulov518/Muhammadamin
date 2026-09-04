@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Clásico – 2D Futbol</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #1e2448 0%, #12152b 55%, #0a0c18 100%);
+      color: #eee;
+      font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 12px;
+      user-select: none;
+    }
+    h1 {
+      margin: 6px 0 10px;
+      font-size: 1.85rem;
+      background: linear-gradient(90deg, #fff 30%, #ffd700 50%, #fff 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px #ffd70044;
+      letter-spacing: 1px;
+    }
+    #ui {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    #score {
+      font-size: 1.45rem;
+      font-weight: 800;
+      background: linear-gradient(180deg, #1c2548, #121a35);
+      padding: 8px 20px;
+      border-radius: 12px;
+      border: 2px solid #2c3a6e;
+      box-shadow: inset 0 0 12px #0006, 0 4px 12px #0005;
+    }
+    #score .rma { color: #f5f5f5; text-shadow: 0 0 10px #fff6; }
+    #score .fcb { color: #8ab4ff; text-shadow: 0 0 10px #0044ff55; }
+    #timer {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(180deg, #1c2548, #121a35);
+      padding: 8px 18px;
+      border-radius: 12px;
+      border: 2px solid #2c3a6e;
+      min-width: 90px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    #timer.low { color: #ff5555; border-color: #ff4444; animation: pulse 0.8s infinite; }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 8px #ff444466; }
+      50% { box-shadow: 0 0 18px #ff4444aa; }
+    }
+    #turn-info {
+      background: linear-gradient(180deg, #1c2548, #121a35);
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 2px solid #2c3a6e;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+    #turn-info.rma-turn { border-color: #e0e0e0; box-shadow: 0 0 12px #ffffff33; }
+    #turn-info.fcb-turn { border-color: #a50044; box-shadow: 0 0 12px #a5004455; }
+
+    button {
+      background: linear-gradient(180deg, #1a4d80, #0e3460);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: all 0.15s;
+      box-shadow: 0 3px 0 #071a30;
+    }
+    button:hover { transform: translateY(-2px); filter: brightness(1.12); }
+    button:active { transform: translateY(1px); box-shadow: 0 1px 0 #071a30; }
+    button.active {
+      background: linear-gradient(180deg, #00ffa2, #00c978);
+      color: #062218;
+      box-shadow: 0 3px 0 #007a4a;
+    }
+
+    #diff-box {
+      display: none;
+      gap: 8px;
+      align-items: center;
+      background: linear-gradient(180deg, #1c2548, #121a35);
+      padding: 6px 10px;
+      border-radius: 12px;
+      border: 2px solid #2c3a6e;
+    }
+    #diff-box.show { display: flex; }
+    .diff-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 3px solid transparent;
+      transition: all 0.2s;
+      box-shadow: 0 3px 0 rgba(0,0,0,0.35);
+    }
+    .diff-btn span.emoji {
+      font-size: 1.7rem;
+      transition: transform 0.2s;
+    }
+    .diff-btn:hover span.emoji { transform: scale(1.35); }
+    .diff-btn.easy { background: linear-gradient(160deg, #3dcc6a, #1a9e45); }
+    .diff-btn.norm { background: linear-gradient(160deg, #f0c gener 040, #d4a017); }
+    .diff-btn.hard { background: linear-gradient(160deg, #ff4d4d, #c41e1e); }
+    .diff-btn.active-diff {
+      border-color: #fff;
+      transform: scale(1.08);
+      box-shadow: 0 0 16px #ffffff66, 0 4px 0 rgba(0,0,0,0.4);
+    }
+    .diff-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    #canvas-wrap { position: relative; margin-top: 4px; }
+    canvas {
+      border: 5px solid #1a3060;
+      border-radius: 12px;
+      box-shadow: 0 0 40px #000a, inset 0 0 50px #0005;
+      max-width: 100%;
+      cursor: crosshair;
+      display: block;
+    }
+
+    #instructions {
+      margin-top: 12px;
+      max-width: 920px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #9aa;
+      line-height: 1.45;
+    }
+    #instructions b { color: #00ff99; }
+
+    /* Game Over */
+    #game-over-overlay {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(4, 6, 16, 0.78);
+      backdrop-filter: blur(3px);
+      border-radius: 8px;
+      z-index: 20;
+    }
+    #game-over-overlay.show { display: flex; }
+    #game-over-card {
+      background: linear-gradient(165deg, #1e2750, #0e1330);
+      border: 2px solid #3a4a88;
+      border-radius: 20px;
+      padding: 32px 48px;
+      text-align: center;
+      box-shadow: 0 0 50px #000c, 0 0 80px #00ff8822;
+      animation: popIn 0.4s cubic-bezier(0.18, 1.2, 0.4, 1);
+      max-width: 92%;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.65); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    #go-trophy { font-size: 3.4rem; margin-bottom: 8px; }
+    #go-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    #go-title.rma { color: #f5f5f5; text-shadow: 0 0 18px #fff8; }
+    #go-title.fcb { color: #8ab4ff; text-shadow: 0 0 18px #0044ff88; }
+    #go-title.draw { color: #ffd700; text-shadow: 0 0 18px #ffd70088; }
+    #go-score { font-size: 1.15rem; color: #ccc; margin-bottom: 22px; }
+    #go-restart {
+      background: linear-gradient(180deg, #00ffa2, #00c978);
+      color: #062218;
+      font-weight: 800;
+      padding: 12px 28px;
+      font-size: 1.05rem;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚽ EL CLÁSICO</h1>
+
+  <div id="ui">
+    <div id="score">
+      <span class="rma">RMA: 0</span> &nbsp;:&nbsp; <span class="fcb">FCB: 0</span>
+    </div>
+    <div id="timer">5:00</div>
+    <div id="turn-info" class="rma-turn">Navbat: RMA</div>
+
+    <div id="mode-btns">
+      <button id="btn-2p" class="active">2 O'yinchi</button>
+      <button id="btn-bot">1 vs Bot</button>
+    </div>
+
+    <div id="diff-box">
+      <button class="diff-btn easy active-diff" data-diff="easy" title="Easy">
+        <span class="emoji">🙂</span>
+      </button>
+      <button class="diff-btn norm" data-diff="norm" title="Normal">
+        <span class="emoji">😑</span>
+      </button>
+      <button class="diff-btn hard" data-diff="hard" title="Hard">
+        <span class="emoji">😡</span>
+      </button>
+    </div>
+
+    <button id="btn-reset">Qayta boshlash</button>
+  </div>
+
+  <div id="canvas-wrap">
+    <canvas id="game" width="900" height="500"></canvas>
+    <div id="game-over-overlay">
+      <div id="game-over-card">
+        <div id="go-trophy">🏆</div>
+        <div id="go-title">G'olib: RMA</div>
+        <div id="go-score">Yakuniy hisob: RMA 3 : 2 FCB</div>
+        <button id="go-restart">Yana o'ynash</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="instructions">
+    <b>Qanday o'ynash:</b> O'z jamoangiz sharigini bosing va torting → kuch + yo'nalish. Har navbatda faqat 1 marta urish mumkin.
+    <b>5 daqiqa</b> ichida ko'proq gol urgan jamoa g'olib. Bot rejimida qiyinlikni tanlang:
+    <span style="color:#3dcc6a">🙂 Easy</span> /
+    <span style="color:#f0c040">😑 Norm</span> /
+    <span style="color:#ff4d4d">😡 Hard</span>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width;
+    const H = canvas.height;
+
+    // ========== SOZLAMALAR ==========
+    const PLAYER_R = 18;
+    const BALL_R = 10;
+    const FRICTION = 0.985;
+    const MIN_SPEED = 0.12;
+    const MAX_POWER = 18;
+    const GOAL_WIDTH = 80;
+    const GOAL_DEPTH = 25;
+    const MATCH_SECONDS = 5 * 60; // 5 daqiqa
+
+    const PLAYER_MASS = 2.2;
+    const BALL_MASS = 1;
+    const RESTITUTION = 0.85;
+    const SUBSTEPS = 4;
+
+    // ========== HOLAT ==========
+    let redScore = 0, blueScore = 0;
+    let currentTeam = 'red';
+    let mode = '2p';
+    let difficulty = 'easy'; // easy | norm | hard
+    let isDragging = false;
+    let dragPlayer = null;
+    let dragStart = null;
+    let dragEnd = null;
+    let isMoving = false;
+    let waitForStop = false;
+    let botThinking = false;
+    let gameOver = false;
+    let timeLeft = MATCH_SECONDS;
+    let timerInterval = null;
+    let goalCooldown = false; // gol keyin qisqa kutish
+
+    let players = [];
+    let ball = null;
+
+    // ========== BOT KUCHI ==========
+    const BOT_CONFIG = {
+      easy: { powerMul: 0.55, aimError: 55, delayMin: 900, delayMax: 1400, goalBias: 0.25 },
+      norm: { powerMul: 0.80, aimError: 22, delayMin: 550, delayMax: 850, goalBias: 0.65 },
+      hard: { powerMul: 0.98, aimError: 6,  delayMin: 280, delayMax: 450, goalBias: 0.95 }
+    };
+
+    // ========== YARATISH ==========
+    function createPlayers() {
+      players = [];
+      const rmaPos = [
+        {x: 120, y: 120}, {x: 120, y: 250}, {x: 120, y: 380},
+        {x: 220, y: 180}, {x: 220, y: 320}
+      ];
+      rmaPos.forEach((p, i) => {
+        players.push({
+          x: p.x, y: p.y, vx: 0, vy: 0,
+          r: PLAYER_R, mass: PLAYER_MASS, team: 'red', number: i + 1
+        });
+      });
+      const fcbPos = [
+        {x: 780, y: 120}, {x: 780, y: 250}, {x: 780, y: 380},
+        {x: 680, y: 180}, {x: 680, y: 320}
+      ];
+      fcbPos.forEach((p, i) => {
+        players.push({
+          x: p.x, y: p.y, vx: 0, vy: 0,
+          r: PLAYER_R, mass: PLAYER_MASS, team: 'blue', number: i + 1
+        });
+      });
+    }
+
+    function createBall() {
+      ball = { x: W / 2, y: H / 2, vx: 0, vy: 0, r: BALL_R, mass: BALL_MASS };
+    }
+
+    function resetPositions() {
+      createPlayers();
+      createBall();
+      isMoving = false;
+      waitForStop = false;
+      isDragging = false;
+      dragPlayer = null;
+      botThinking = false;
+      goalCooldown = false;
+    }
+
+    function resetFull() {
+      redScore = 0;
+      blueScore = 0;
+      currentTeam = 'red';
+      gameOver = false;
+      timeLeft = MATCH_SECONDS;
+      hideGameOver();
+      updateUI();
+      updateTimerDisplay();
+      resetPositions();
+      startTimer();
+    }
+
+    // ========== TIMER ==========
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (gameOver) return;
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          timeLeft = 0;
+          updateTimerDisplay();
+          endMatch();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(timeLeft / 60);
+      const s = timeLeft % 60;
+      const el = document.getElementById('timer');
+      el.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+      el.classList.toggle('low', timeLeft <= 30);
+    }
+
+    function endMatch() {
+      if (gameOver) return;
+      gameOver = true;
+      if (timerInterval) clearInterval(timerInterval);
+      isMoving = false;
+      waitForStop = false;
+      botThinking = false;
+
+      let winner = null;
+      if (redScore > blueScore) winner = 'red';
+      else if (blueScore > redScore) winner = 'blue';
+      // else draw
+
+      showGameOver(winner);
+    }
+
+    // ========== UI ==========
+    function updateUI() {
+      document.getElementById('score').innerHTML =
+        `<span class="rma">RMA: ${redScore}</span> &nbsp;:&nbsp; <span class="fcb">FCB: ${blueScore}</span>`;
+
+      const turnEl = document.getElementById('turn-info');
+      if (currentTeam === 'red') {
+        turnEl.textContent = mode === 'bot' ? "Navbat: Siz (RMA)" : "Navbat: RMA";
+        turnEl.className = 'rma-turn';
+      } else {
+        turnEl.textContent = mode === 'bot' ? "Navbat: Bot (FCB)" : "Navbat: FCB";
+        turnEl.className = 'fcb-turn';
+      }
+    }
+
+    function showGameOver(winnerTeam) {
+      gameOver = true;
+      const overlay = document.getElementById('game-over-overlay');
+      const title = document.getElementById('go-title');
+      const scoreEl = document.getElementById('go-score');
+
+      if (winnerTeam === 'red') {
+        title.textContent = "G'olib: RMA 🏆";
+        title.className = 'rma';
+      } else if (winnerTeam === 'blue') {
+        title.textContent = "G'olib: FCB 🏆";
+        title.className = 'fcb';
+      } else {
+        title.textContent = "Durrang! 🤝";
+        title.className = 'draw';
+      }
+      scoreEl.textContent = `Yakuniy hisob: RMA ${redScore} : ${blueScore} FCB`;
+      overlay.classList.add('show');
+    }
+
+    function hideGameOver() {
+      document.getElementById('game-over-overlay').classList.remove('show');
+    }
+
+    // ========== TUGMALAR ==========
+    document.getElementById('go-restart').onclick = resetFull;
+    document.getElementById('btn-reset').onclick = resetFull;
+
+    document.getElementById('btn-2p').onclick = () => {
+      mode = '2p';
+      document.getElementById('btn-2p').classList.add('active');
+      document.getElementById('btn-bot').classList.remove('active');
+      document.getElementById('diff-box').classList.remove('show');
+      resetFull();
+    };
+
+    document.getElementById('btn-bot').onclick = () => {
+      mode = 'bot';
+      document.getElementById('btn-bot').classList.add('active');
+      document.getElementById('btn-2p').classList.remove('active');
+      document.getElementById('diff-box').classList.add('show');
+      resetFull();
+    };
+
+    // Difficulty buttons
+    document.querySelectorAll('.diff-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active-diff'));
+        btn.classList.add('active-diff');
+        difficulty = btn.dataset.diff;
+      });
+    });
+
+    // ========== SICHQONCHA ==========
+    function getMousePos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      return {
+        x: (e.clientX - rect.left) * scaleX,
+        y: (e.clientY - rect.top) * scaleY
+      };
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      if (gameOver || isMoving || waitForStop || botThinking || goalCooldown) return;
+      if (mode === 'bot' && currentTeam === 'blue') return;
+
+      const m = getMousePos(e);
+      for (let p of players) {
+        if (p.team !== currentTeam) continue;
+        const dx = m.x - p.x, dy = m.y - p.y;
+        if (dx * dx + dy * dy < (p.r + 6) * (p.r + 6)) {
+          isDragging = true;
+          dragPlayer = p;
+          dragStart = { x: p.x, y: p.y };
+          dragEnd = { x: m.x, y: m.y };
+          break;
+        }
+      }
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      if (!isDragging || !dragPlayer) return;
+      dragEnd = getMousePos(e);
+    });
+
+    canvas.addEventListener('mouseup', () => {
+      if (!isDragging || !dragPlayer) return;
+      isDragging = false;
+
+      const dx = dragStart.x - dragEnd.x;
+      const dy = dragStart.y - dragEnd.y;
+      let power = Math.sqrt(dx * dx + dy * dy) / 12;
+      if (power > MAX_POWER) power = MAX_POWER;
+      if (power < 0.4) {
+        dragPlayer = null;
+        return;
+      }
+
+      const angle = Math.atan2(dy, dx);
+      dragPlayer.vx = Math.cos(angle) * power;
+      dragPlayer.vy = Math.sin(angle) * power;
+
+      isMoving = true;
+      waitForStop = true;
+      dragPlayer = null;
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      if (isDragging) {
+        isDragging = false;
+        dragPlayer = null;
+      }
+    });
+
+    // ========== FIZIKA ==========
+    function applyFriction(obj) {
+      obj.vx *= FRICTION;
+      obj.vy *= FRICTION;
+      if (Math.abs(obj.vx) < MIN_SPEED) obj.vx = 0;
+      if (Math.abs(obj.vy) < MIN_SPEED) obj.vy = 0;
+    }
+
+    function collideCircles(a, b) {
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const minDist = a.r + b.r;
+      if (dist >= minDist || dist === 0) return;
+
+      const nx = dx / dist;
+      const ny = dy / dist;
+      const overlap = minDist - dist;
+      const totalMass = a.mass + b.mass;
+      a.x -= nx * overlap * (b.mass / totalMass);
+      a.y -= ny * overlap * (b.mass / totalMass);
+      b.x += nx * overlap * (a.mass / totalMass);
+      b.y += ny * overlap * (a.mass / totalMass);
+
+      const dvx = a.vx - b.vx;
+      const dvy = a.vy - b.vy;
+      const dvn = dvx * nx + dvy * ny;
+      if (dvn < 0) return;
+
+      const impulse = (1 + RESTITUTION) * dvn / (1 / a.mass + 1 / b.mass);
+      a.vx -= (impulse / a.mass) * nx;
+      a.vy -= (impulse / a.mass) * ny;
+      b.vx += (impulse / b.mass) * nx;
+      b.vy += (impulse / b.mass) * ny;
+    }
+
+    function wallCollision(obj) {
+      const goalTop = (H - GOAL_WIDTH) / 2;
+      const goalBot = (H + GOAL_WIDTH) / 2;
+
+      if (obj.x - obj.r < 0) {
+        if (!(obj.y > goalTop && obj.y < goalBot)) {
+          obj.x = obj.r;
+          obj.vx = -obj.vx * 0.7;
+        }
+      }
+      if (obj.x + obj.r > W) {
+        if (!(obj.y > goalTop && obj.y < goalBot)) {
+          obj.x = W - obj.r;
+          obj.vx = -obj.vx * 0.7;
+        }
+      }
+      if (obj.y - obj.r < 0) {
+        obj.y = obj.r;
+        obj.vy = -obj.vy * 0.7;
+      }
+      if (obj.y + obj.r > H) {
+        obj.y = H - obj.r;
+        obj.vy = -obj.vy * 0.7;
+      }
+    }
+
+    function checkGoal() {
+      if (goalCooldown || gameOver) return false;
+      const goalTop = (H - GOAL_WIDTH) / 2;
+      const goalBot = (H + GOAL_WIDTH) / 2;
+
+      // Chap darvoza → FCB gol
+      if (ball.x + ball.r < 8 && ball.y > goalTop && ball.y < goalBot) {
+        blueScore++;
+        goalCooldown = true;
+        updateUI();
+        isMoving = false;
+        waitForStop = false;
+        setTimeout(() => {
+          if (gameOver) return;
+          currentTeam = 'red';
+          updateUI();
+          resetPositions();
+        }, 900);
+        return true;
+      }
+      // O'ng darvoza → RMA gol
+      if (ball.x - ball.r > W - 8 && ball.y > goalTop && ball.y < goalBot) {
+        redScore++;
+        goalCooldown = true;
+        updateUI();
+        isMoving = false;
+        waitForStop = false;
+        setTimeout(() => {
+          if (gameOver) return;
+          currentTeam = 'blue';
+          updateUI();
+          resetPositions();
+          if (mode === 'bot') botMove();
+        }, 900);
+        return true;
+      }
+      return false;
+    }
+
+    function anyMoving() {
+      if (Math.abs(ball.vx) > MIN_SPEED || Math.abs(ball.vy) > MIN_SPEED) return true;
+      for (let p of players) {
+        if (Math.abs(p.vx) > MIN_SPEED || Math.abs(p.vy) > MIN_SPEED) return true;
+      }
+      return false;
+    }
+
+    // ========== BOT ==========
+    function botMove() {
+      if (gameOver || botThinking || currentTeam !== 'blue' || mode !== 'bot' || goalCooldown) return;
+      botThinking = true;
+
+      const cfg = BOT_CONFIG[difficulty];
+      const delay = cfg.delayMin + Math.random() * (cfg.delayMax - cfg.delayMin);
+
+      setTimeout(() => {
+        if (gameOver || currentTeam !== 'blue') {
+          botThinking = false;
+          return;
+        }
+
+        // Eng yaxshi o'yinchini tanlash (to'pga yaqin + golga yaqinroq)
+        let best = null;
+        let bestScore = -Infinity;
+        for (let p of players) {
+          if (p.team !== 'blue') continue;
+          const distBall = Math.hypot(p.x - ball.x, p.y - ball.y);
+          const distGoal = Math.hypot(p.x - 40, p.y - H / 2);
+          const score = -distBall * 1.4 - distGoal * 0.3 + (Math.random() - 0.5) * 30;
+          if (score > bestScore) {
+            bestScore = score;
+            best = p;
+          }
+        }
+        if (!best) {
+          botThinking = false;
+          return;
+        }
+
+        // Nishon: chap darvoza (RMA darvozasi)
+        const targetX = 25;
+        const targetY = H / 2 + (Math.random() - 0.5) * cfg.aimError * 1.5;
+
+        const distToBall = Math.hypot(ball.x - best.x, ball.y - best.y);
+        let aimX, aimY;
+
+        if (distToBall < 95 && Math.random() < cfg.goalBias) {
+          // To'pni darvozaga yo'naltirish
+          const toGoalX = targetX - ball.x;
+          const toGoalY = targetY - ball.y;
+          const len = Math.hypot(toGoalX, toGoalY) || 1;
+          aimX = ball.x - (toGoalX / len) * 28;
+          aimY = ball.y - (toGoalY / len) * 28;
+        } else {
+          // Oddiy to'pga
+          aimX = ball.x + (Math.random() - 0.5) * cfg.aimError;
+          aimY = ball.y + (Math.random() - 0.5) * cfg.aimError;
+        }
+
+        const dx = aimX - best.x;
+        const dy = aimY - best.y;
+        let power = Math.min(MAX_POWER * cfg.powerMul, Math.hypot(dx, dy) / 9 + 5);
+        power *= (0.9 + Math.random() * 0.2);
+
+        const angle = Math.atan2(dy, dx);
+        best.vx = Math.cos(angle) * power;
+        best.vy = Math.sin(angle) * power;
+
+        isMoving = true;
+        waitForStop = true;
+        botThinking = false;
+      }, delay);
+    }
+
+    // ========== CHIZISH ==========
+    function drawField() {
+      const stripeCount = 12;
+      const stripeW = W / stripeCount;
+      for (let i = 0; i < stripeCount; i++) {
+        ctx.fillStyle = i % 2 === 0 ? '#2d8f42' : '#278a3c';
+        ctx.fillRect(i * stripeW, 0, stripeW + 1, H);
+      }
+
+      ctx.strokeStyle = 'rgba(255,255,255,0.78)';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(4, 4, W - 8, H - 8);
+
+      ctx.beginPath();
+      ctx.moveTo(W / 2, 4);
+      ctx.lineTo(W / 2, H - 4);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(W / 2, H / 2, 62, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(W / 2, H / 2, 5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+      ctx.fill();
+
+      const boxW = 125, boxH = 210;
+      ctx.strokeRect(4, (H - boxH) / 2, boxW, boxH);
+      ctx.strokeRect(W - 4 - boxW, (H - boxH) / 2, boxW, boxH);
+
+      const sBoxW = 52, sBoxH = 105;
+      ctx.strokeRect(4, (H - sBoxH) / 2, sBoxW, sBoxH);
+      ctx.strokeRect(W - 4 - sBoxW, (H - sBoxH) / 2, sBoxW, sBoxH);
+
+      const gTop = (H - GOAL_WIDTH) / 2;
+      ctx.fillStyle = 'rgba(0,0,0,0.28)';
+      ctx.fillRect(-GOAL_DEPTH, gTop, GOAL_DEPTH, GOAL_WIDTH);
+      ctx.fillRect(W, gTop, GOAL_DEPTH, GOAL_WIDTH);
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(-GOAL_DEPTH, gTop, GOAL_DEPTH, GOAL_WIDTH);
+      ctx.strokeRect(W, gTop, GOAL_DEPTH, GOAL_WIDTH);
+
+      ctx.fillStyle = '#ddd';
+      ctx.fillRect(-3, gTop - 3, 6, GOAL_WIDTH + 6);
+      ctx.fillRect(W - 3, gTop - 3, 6, GOAL_WIDTH + 6);
+    }
+
+    function drawPlayer(p) {
+      ctx.beginPath();
+      ctx.ellipse(p.x + 1, p.y + p.r * 0.55 + 4, p.r * 0.85, p.r * 0.32, 0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,0.32)';
+      ctx.fill();
+
+      if (p.team === 'red') {
+        // Real Madrid – oq + oltin
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r + 2.4, 0, Math.PI * 2);
+        ctx.fillStyle = '#c9a227';
+        ctx.fill();
+
+        const grad = ctx.createRadialGradient(p.x - 6, p.y - 7, 3, p.x, p.y, p.r);
+        grad.addColorStop(0, '#ffffff');
+        grad.addColorStop(0.65, '#f0f0f0');
+        grad.addColorStop(1, '#c8c8c8');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r - 2, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(201,162,39,0.65)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.ellipse(p.x - 6, p.y - 7, 7, 4.5, -0.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.55)';
+        ctx.fill();
+
+        ctx.font = `bold ${Math.round(p.r * 0.95)}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'rgba(0,0,0,0.22)';
+        ctx.fillText(p.number, p.x + 0.7, p.y + 1.5);
+        ctx.fillStyle = '#2a2a2a';
+        ctx.fillText(p.number, p.x, p.y);
+      } else {
+        // Barcelona – ko'k + qizil
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r + 2.4, 0, Math.PI * 2);
+        ctx.fillStyle = '#8B0015';
+        ctx.fill();
+
+        const grad = ctx.createRadialGradient(p.x - 6, p.y - 7, 3, p.x, p.y, p.r);
+        grad.addColorStop(0, '#5ca0ff');
+        grad.addColorStop(0.5, '#004d98');
+        grad.addColorStop(1, '#002a5c');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Qizil chiziq
+        ctx.beginPath();
+        ctx.rect(p.x - p.r * 0.2, p.y - p.r + 1, p.r * 0.4, p.r * 2 - 2);
+        ctx.fillStyle = 'rgba(165, 0, 68, 0.88)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(p.x - 6, p.y - 7, 6, 4, -0.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.3)';
+        ctx.fill();
+
+        ctx.font = `bold ${Math.round(p.r * 0.95)}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'rgba(0,0,0,0.3)';
+        ctx.fillText(p.number, p.x + 0.7, p.y + 1.5);
+        ctx.fillStyle = '#fff';
+        ctx.fillText(p.number, p.x, p.y);
+      }
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.ellipse(ball.x + 1, ball.y + ball.r * 0.5 + 2, ball.r * 0.9, ball.r * 0.38, 0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.fill();
+
+      const grad = ctx.createRadialGradient(ball.x - 4, ball.y - 5, 1, ball.x, ball.y, ball.r);
+      grad.addColorStop(0, '#fff');
+      grad.addColorStop(0.7, '#f0f0f0');
+      grad.addColorStop(1, '#bbb');
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.strokeStyle = '#222';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      drawPentagon(ball.x, ball.y, ball.r * 0.4, -Math.PI / 2, '#1a1a1a');
+      for (let i = 0; i < 5; i++) {
+        const a = -Math.PI / 2 + i * (Math.PI * 2 / 5);
+        drawPentagon(
+          ball.x + Math.cos(a) * ball.r * 0.75,
+          ball.y + Math.sin(a) * ball.r * 0.75,
+          ball.r * 0.26, a, '#1a1a1a'
+        );
+      }
+
+      ctx.beginPath();
+      ctx.ellipse(ball.x - 4, ball.y - 5, 4, 2.5, -0.4, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.fill();
+    }
+
+    function drawPentagon(cx, cy, size, rot, color) {
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const a = rot + i * (Math.PI * 2 / 5);
+        const x = cx + Math.cos(a) * size;
+        const y = cy + Math.sin(a) * size;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    function drawAimLine() {
+      if (!isDragging || !dragPlayer || !dragEnd) return;
+      const dx = dragStart.x - dragEnd.x;
+      const dy = dragStart.y - dragEnd.y;
+      let power = Math.min(MAX_POWER, Math.sqrt(dx * dx + dy * dy) / 12);
+
+      ctx.beginPath();
+      ctx.moveTo(dragPlayer.x, dragPlayer.y);
+      ctx.lineTo(dragPlayer.x + dx * 1.15, dragPlayer.y + dy * 1.15);
+      ctx.strokeStyle = power > 11 ? '#ff4444' : '#ffe066';
+      ctx.lineWidth = 3.5;
+      ctx.setLineDash([7, 5]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 14px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('Kuch: ' + power.toFixed(1), dragPlayer.x + 18, dragPlayer.y - 18);
+    }
+
+    // ========== ASOSIY LOOP ==========
+    function physicsStep() {
+      ball.x += ball.vx / SUBSTEPS;
+      ball.y += ball.vy / SUBSTEPS;
+      wallCollision(ball);
+
+      for (let p of players) {
+        p.x += p.vx / SUBSTEPS;
+        p.y += p.vy / SUBSTEPS;
+        wallCollision(p);
+      }
+
+      for (let i = 0; i < players.length; i++) {
+        for (let j = i + 1; j < players.length; j++) {
+          collideCircles(players[i], players[j]);
+        }
+      }
+      for (let p of players) collideCircles(p, ball);
+    }
+
+    function update() {
+      if (gameOver) return;
+
+      if (isMoving || waitForStop) {
+        for (let s = 0; s < SUBSTEPS; s++) physicsStep();
+
+        applyFriction(ball);
+        for (let p of players) applyFriction(p);
+
+        if (checkGoal()) return;
+
+        if (waitForStop && !anyMoving()) {
+          isMoving = false;
+          waitForStop = false;
+          currentTeam = currentTeam === 'red' ? 'blue' : 'red';
+          updateUI();
+          if (mode === 'bot' && currentTeam === 'blue') {
+            botMove();
+          }
+        }
+      }
+    }
+
+    function draw() {
+      drawField();
+      for (let p of players) drawPlayer(p);
+      drawBall();
+      drawAimLine();
+
+      if (!gameOver && !isMoving && !waitForStop && !botThinking && !goalCooldown) {
+        ctx.fillStyle = currentTeam === 'red' ? 'rgba(255,255,255,0.07)' : 'rgba(0,50,140,0.1)';
+        ctx.fillRect(0, 0, W, H);
+      }
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    // Boshlash
+    resetFull();
+    loop();
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #12635b;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .karta {
+            background-color: white;
+            width: 100%;
+            max-width: 440px;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .ulash-tugmalari {
+            display: flex;
+            background-color: white;
+            padding: 4px;
+            border-radius: 12px;
+            margin-bottom: 28px;
+        }
+
+        button {
+            width: 50%;
+            padding: 10px 16px;
+            border: none;
+            background: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #12635b;
+        }
+
+        .faol-tugma {
+            background-color: #12635b;
+            color: white;
+        }
+
+        .forma-sarlavha {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .forma-tavsif {
+            font-size: 14px;
+            color: grey;
+            margin-bottom: 24px;
+        }
+
+        .kiritish-guruhi {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #113835;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #12635b;
+        }
+
+        input::placeholder {
+            color: #94a3b8;
+        }
+
+        .asosiy-tugma {
+            width: 100%;
+            background-color: #12635b;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .asosiy-tugma:hover {
+            background-color: #0e4f48;
+        }
+
+        .paski-matn {
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .paski-matn a {
+            color: #12635b;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .yashirin {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="karta">
+        <div class="ulash-tugmalari">
+            <button onclick="kirish()" id="kirish-tab" class="faol-tugma">Kirish</button>
+            <button onclick="chiqish()" id="royxat-tab">Hisob ochish</button>
+        </div>
+
+        <form id="kirish-firmasi" class="yashirin">
+            <h1 class="forma-sarlavha">Hush kelibsiz</h1>
+            <p class="forma-tavsif">Loyihalaringizni boshqarish uchun tizimga kiring.</p>
+
+            <div class="kiritish-guruhi">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="kiritish-guruhi">
+                <label>Parol</label>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="asosiy-tugma">Kirish</button>
+
+            <div class="paski-matn">
+                <a href="#">Parolni unutdingizmi?</a>
+            </div>
+        </form>
+         <div >
+            <h1 class="forma-sarlavha">Hisobingizni yarating</h1>
+            <p class="forma-tavsif">14 kun bepul. Bank kartasi talab qilinmaydi.</p>
+
+            <div class="kiritish-guruhi">
+                <label>To'liq ismingiz</label>
+                <input type="text" placeholder="Ism Familiya" required>
+            </div>
+
+            <div class="kiritish-guruhi">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="kiritish-guruhi">
+                <label>Parol</label>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="asosiy-tugma">Hisob ochish</button>
+
+            <div class="paski-matn">
+                Ro'yxatdan o'tish orqali siz <a href="#">Shartlarga</a> rozilik bildirasiz.
+            </div>
+            </div>
+    </div>
+    <script>
+        let kirishTab = document.getElementById('kirish-tab');
+        let royxatTab = document.getElementById('royxat-tab');
+        let kirishFormasi = document.getElementById('kirish-firmasi');
+        let royxatFormasi = document.getElementById('royxat-firmasi');
+
+        function chiqish() {
+            royxatTab.classList.add('faol-tugma');
+            kirishTab.classList.remove('faol-tugma');
+            royxatFormasi.classList.remove('yashirin');
+            kirishFormasi.classList.add('yashirin');z
+        }
+        function kirish() {
+            kirishTab.classList.add('faol-tugma');
+            royxatTab.classList.remove('faol-tugma');
+            kirishFormasi.classList.remove('yashirin');
+            royxatFormasi.classList.add('yashirin');
+        }
+
+
+
+    </script>
+</body>
+</html>

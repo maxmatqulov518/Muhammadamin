@@ -1,0 +1,291 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    margin-bottom: 200px;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+h1{
+    color: #5b76ff;
+}
+nav{
+    margin: 0 auto;
+    width: 98%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav > img{
+    width: 24px;
+    height: 24px;
+}
+.btn{
+    gap: 20px;
+    button{
+    background-color: #5b76ff;
+    border-radius: 35px;
+    padding: 15px 30px;
+    border: none;
+    color: white;
+}
+}
+section{
+    text-align: center;
+}
+span{
+    color: #4eccc6;
+}
+h2{
+    font-size: 50px;
+    padding-bottom: 30px;
+}
+.section-p{
+    color: grey;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+
+
+@media (max-width: 768px) {
+    nav > img{
+        display: inline-block;
+    }
+    nav > ul{
+        display: none;
+    }
+    .btn{
+        display: none;
+    }
+}
+.btn2{
+    background-color: #5b76ff;
+    border-radius: 35px;
+    padding: 14px 40px;
+    border: none;
+    color: white;
+    margin-bottom: 170px;
+}
+h3{
+    font-size: 45px;
+    padding-left: 100px;
+    padding-bottom: 90px;
+}
+        .karta{
+    width: 450px;
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: start;
+    margin-left: 100px;
+}
+.karta img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+.karta h4{
+    padding: 10px;
+    font-size: 35px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+.qaz{
+    padding: 0 10px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    color: grey;
+
+}
+.katta-karta{
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    margin-bottom: 100px;
+}
+.button-p{
+    font-size: 25px;
+    color: #5b76ff;
+    font-weight: bold;
+    padding: 0 10px;
+    padding-left: 30px;
+    padding-bottom: 50px;
+}
+.yashirinchi{
+    background-color: #5b76ff;
+    border-radius: 50%;
+    padding: 30px;
+    border: none;
+    color: white;
+    font-size: 40px;
+}
+.yashirinchi-div{
+    display: flex;
+    gap: 240px;
+}
+.p-katta{
+    text-align: center;
+}
+.p-katta-1{
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 40px;
+}
+.p-katta-2{
+    font-size: 25px;
+    font-weight: bold;
+    color: grey;
+    padding-bottom: 40px;
+}
+.btn3{
+    background-color: #5b76ff;
+    border-radius: 35px;
+    padding: 17px 47px;
+    border: none;
+    color: white;
+    margin-bottom: 170px;
+}
+.box{
+    text-align: center;
+    background-color: #5b76ff;
+    padding: 150px;
+    align-items: center;
+    justify-content: space-between;
+}
+.p-1{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 50px;
+    padding-top: -100px;
+}
+h5{
+    font-size: 45px;
+    font-weight: bold;
+    padding-bottom: 50px;
+    color: white;
+}
+.p-2{
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 50px;
+}
+.btn4{
+    background-color:white;
+    border-radius: 35px;
+    padding: 17px 47px;
+    border: none;
+    color: #5b76ff;
+    margin-bottom: 170px;
+}
+@media (min-width: 769px) {
+    nav > img{
+        display: none;
+    }
+    nav > ul{
+        display: flex;
+    }
+    .btn{
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .katta-karta{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .karta {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .blog h2 {
+        text-align: center;
+    }
+
+    .obuna {
+        padding: 0 15px;
+    }
+}
+.footer{
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.footer h2{
+    color: blue;
+}
+
+.menu{
+    display: flex;
+    gap: 80px;
+}
+
+.menu h4{
+    color: turquoise;
+    margin-bottom: 10px;
+}
+
+.menu p{
+    margin-bottom: 8px;
+}
+
+.links{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.links a{
+    text-decoration: none;
+    color: blue;
+}
+
+@media (max-width:600px){
+
+    .footer{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .menu{
+        gap: 50px;
+    }
+}

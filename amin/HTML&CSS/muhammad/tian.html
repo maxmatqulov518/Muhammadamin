@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Community</title>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f7f7f7;
+}
+
+/* Navbar */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+}
+
+nav button{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:gray;
+    margin-bottom:20px;
+}
+
+.btn{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* Cards */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:40px;
+}
+
+.card{
+    background:black;
+    color:white;
+    width:250px;
+    padding:25px;
+    border-radius:10px;
+}
+
+/* Courses */
+.courses{
+    padding:60px;
+    text-align:center;
+}
+
+.course-list{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.course{
+    background:white;
+    width:250px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.course img{
+    width:100%;
+    border-radius:8px;
+}
+
+.course button{
+    margin-top:10px;
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:6px;
+}
+
+/* Testimonial */
+.testimonial{
+    background:linear-gradient(90deg,#7c3aed,#ff66c4);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+/* Features */
+.features{
+    padding:70px;
+}
+
+.feature{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    margin-bottom:60px;
+}
+
+.feature img{
+    width:220px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    background:white;
+    padding:30px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚛ Fan</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Courses</a>
+            <a href="#">About</a>
+            <button>Sign Up</button>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Where the joy of<br>learn meets the<br>power of community</h1>
+        <p>
+            Dive into a vibrant world of learning,
+            inspiration and growth.
+        </p>
+        <button class="btn">Get Started</button>
+    </section>
+    <section class="cards">
+        <div class="card">
+            <h3>Explore Topics</h3>
+            <p>Discover new subjects and skills.</p>
+        </div>
+        <div class="card">
+            <h3>Meet New Friends</h3>
+            <p>Connect with learners worldwide.</p>
+        </div>
+        <div class="card">
+            <h3>Learn Code</h3>
+            <p>Build projects and improve skills.</p>
+        </div>
+    </section>
+    <section class="courses">
+        <h2>Popular Courses</h2>
+        <div class="course-list">
+            <div class="course">
+                <img src="https://via.placeholder.com/250x120" alt="">
+                <h4>Frontend Development</h4>
+                <button>Start Course</button>
+            </div>
+            <div class="course">
+                <img src="https://via.placeholder.com/250x120" alt="">
+                <h4>JavaScript Basics</h4>
+                <button>Start Course</button>
+            </div>
+            <div class="course">
+                <img src="https://via.placeholder.com/250x120" alt="">
+                <h4>React Course</h4>
+                <button>Start Course</button>
+            </div>
+            <div class="course">
+                <img src="https://via.placeholder.com/250x120" alt="">
+                <h4>UI/UX Design</h4>
+                <button>Start Course</button>
+            </div>
+        </div>
+    </section>
+    <section class="testimonial">
+        <h2>Emily Rolando</h2>
+        <p>
+            I recently started learning to code with Fan
+            and it has been a game changer.
+        </p>
+    </section>
+    <section class="features">
+        <div class="feature">
+            <img src="https://via.placeholder.com/220" alt="">
+            <div>
+                <h2>Explore Topics</h2>
+                <p>Choose from many exciting subjects.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/220" alt="">
+            <div>
+                <h2>Meet New Friends</h2>
+                <p>Connect with people around the world.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/220" alt="">
+            <div>
+                <h2>Find Community</h2>
+                <p>Join a supportive learning network.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h3>⚛ Fan</h3>
+        <p>© 2025 Learning Community</p>
+    </footer>
+</body>
+</html>

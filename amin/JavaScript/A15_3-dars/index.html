@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Kartochkalar</title>
+<style>
+  * { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+  }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f6b8b0, #f9d8c9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  .icon-box {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  .card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #222;
+  }
+  .card p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .card a {
+    color: #f5722a;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <div class="icon-box">📝</div>
+    <div>
+      <h3>Create your profile</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon-box">👥</div>
+    <div>
+      <h3>Add your friends</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon-box">📣</div>
+    <div>
+      <h3>Share with friends</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

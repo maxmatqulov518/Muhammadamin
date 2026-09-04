@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        html{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color:#3b82f6;
+            padding-bottom: 400px;
+        }
+        header p{
+            font-weight: bold;
+            color: #3b82f6;
+        }header a{
+            text-decoration: none;
+            color: #3b82f6;
+        }
+        header{
+            background-color:#fcfcfc;
+            border-bottom: 1px solid #999;
+            display: flex;
+            justify-content: space-between;
+            z-index: 100;
+            padding: 20px;
+            position:sticky;
+            top: 0;
+        }
+        .quti{
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .quti-banner{
+            width: 100%;
+            height: 240px;
+            background-color:#f6b53b;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .quti-banner span{
+            background-color: #10b981;
+            color: white;
+            padding: 6px 12px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 20px;
+            text-transform: uppercase;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+        .quti-banner img{
+            position: absolute;
+            right: -50px;
+            bottom: -30px;
+            width: 200px;
+        }
+        .maqola-matni{
+            line-height: 1.7;
+            margin-top: 15px;
+
+        }
+        .ulashish{
+            background-color: #1e293b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 10px 15px rgba(0,0,0,3);
+            display: flex;
+            gap: 15px;
+            font-style: 11px;
+            bottom: 25px;
+            left: 44%;
+            position: fixed ;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p>✏️ Teach Journal</p>
+        <a href="#">Sign in</a>
+    </header>
+    <section class="quti">
+        <div class="quti-banner">
+            <span>Web Dev</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="">
+        </div>
+        <h1>Undurstanding CSS Architecture</h1>
+        <p id="maqola-vaqti">Published June 2026 2 mins read</p>
+        <div class="maqola-matni">
+            <p>Mastering CSS layout properties like <code>position</code> shifts your frontend abilities from guesswork to absolute precision. Whether engineering complex modern dashboard panels or pinning interactive elements to specific focal areas, positioning remains a core pillar of modern web styling.</p>
+            <br>
+            <p>Scroll downward to observe how the navigation bar anchors seamlessly to the viewport boundary while reading, mimicking production news platforms.</p>
+        </div>
+    </section>
+    <section class="ulashish">
+        <span>👍 Like</span>
+        <span>💬Comment</span>
+        <span>🔗Share</span>
+    </section>
+</body>
+</html>

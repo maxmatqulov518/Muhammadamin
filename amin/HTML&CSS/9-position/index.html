@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.position-demo{
+    height: 200px;
+    border:  2px solid #333;
+    background-color:white;
+    margin: 20px;
+}
+.static-box{
+    position: static;
+    background-color:white;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #2196f3;
+}
+.relative-box{
+    position: relative;
+    top: 0;
+    left: 30px;
+    background-color:white;
+    padding: 10px;
+    border: 1px solid #9c27b0;
+    margin-right: 20px;
+}
+.absolute-box{
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    background-color:white;
+    padding: 10px;
+    border: 1px solid #4caf50;
+}
+.fixed-box{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff3e0;
+    padding: 10px;
+    border: 1px solid #ff9800;
+}
+.sicky-box{
+    position: sticky;
+    top: 20px;
+    background-color: lightgreen;
+    padding: 10px;
+    border: 1px solid green;
+}
+body{
+    height: 3000px;
+}
+    </style>
+</head>
+<body>
+    <div class="position-demo">
+        <div class="static-box"> static (oddiy)</div>
+        <div class="relative-box">Relative (nisbiy)</div>
+        <div class="absolute-box">Asalute (mutlaq)</div>
+    </div>
+    <div class="fixed-box">Fixed (qotirilgan)</div>
+    <div class="sicky-box">Sicky(yopishqoq)</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .div1 {
+            display: flex;
+            padding: 30px;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .div2 {
+            padding-top: 25px;
+            padding-bottom: 35px;
+            padding-left: 25px;
+            padding-right: 25px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        body {
+            background-color: aliceblue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        img {
+            border-radius: 10px;
+            width: 700px;
+        }
+
+        h2 {
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .pe {
+            padding-bottom: 10px;
+            color: gray;
+        }
+
+        .div3 {
+            display: flex;
+            gap: 10px;
+            padding-bottom: 10px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 3px;
+            border: 15px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .piy {
+            padding-bottom: 10px;
+        }
+
+        .poiuy {
+            font-size: 18px;
+            text-decoration: line-through;
+        }
+
+        .absolute-box {
+            position: fixed;
+            left: 1850px;
+            background-color: green;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .fixed-box {
+            position: absolute;
+            top: 175px;
+            left: 230px;
+            background-color: red;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .relative-box {
+            position: absolute;
+            top: 175px;
+            right: 850px;
+            background-color: green;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🛍️Shop.uz</h1>
+    </header>
+    <div class="div1">
+        <div class="div2">
+            <img src="https://cdn.pixabay.com/photo/2021/07/28/12/56/smartwatch-6500150_640.jpg" alt="">
+            <h2>Smart Watch</h2>
+            <p class="pe">Aqil soat yurag urushini o'lchaydi va sport uchun juda qulay.</p>
+            <div class="div3">
+                <p class="poiuy">1 200 000</p>
+                <button>999 000 so'm</button>
+            </div>
+            <p class="piy">Omborda: 12 ta</p>
+            <p>⭐⭐⭐⭐⭐</p>
+        </div>
+        <div class="div2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4v7SxOD5I-VG3OOj-aUBw0FZdEEZOPDiG5A&s"
+                alt="">
+            <h2>Wireless headphones</h2>
+            <p class="pe">Simsi quloqchin,toza ovoz va uzoq batareya bilan.</p>
+            <div class="div3">
+                <button>799 000 so'm</button>
+            </div>
+            <p class="piy">Omborda: 5 ta</p>
+            <p>⭐⭐⭐⭐⭐</p>
+        </div>
+    </div>
+    <div class="fixed-box">-20%</div>
+    <div class="relative-box">Yangi</div>
+    <div class="absolute-box">💬</div>
+</body>
+
+</html>

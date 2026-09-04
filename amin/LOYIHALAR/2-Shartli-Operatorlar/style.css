@@ -1,0 +1,15 @@
+*, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+}
+.narxnoma{
+    width: 300px;
+    margin: 0 auto;
+    border:  1px solid grey;
+    border-radius: 15px;
+    padding: 10px 20px;
+}

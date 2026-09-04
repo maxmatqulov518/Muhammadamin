@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        html{
+            margin: 0;
+            padding: 0;
+            box-shadow: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        padding-bottom: 20px;
+        padding: 30px 70px;
+        background-color: rgb(11, 11, 133);
+        }
+        .loga_div{
+            font-size: 35px;
+            color: white;
+            font-weight: 700;
+        }
+        a{
+        text-decoration: none;
+        color: white;
+        margin: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 20px;
+        gap: 15px;
+        }
+        .katta-div{
+            background: linear-gradient(to right,rgb(11, 11, 133),rgb(19, 100, 240));
+            padding: 110px;
+            color: white;
+            text-align: center;
+        }
+        h1{
+            font-size: 45px;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+        .katta-div-p{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h2{
+            font-size: 30px;
+            padding: 25px 70px;
+        }
+        body{
+            background-color: aliceblue;
+        }
+        .divlar-boshi-ichi{
+            padding:32px 20px;
+            background-color: white;
+            width: 1000px;
+            padding-right: 70px;
+            border-left:6px solid blue;
+            align-items: start;
+            border-radius: 10px;
+            margin-left: 70px;
+            margin-bottom: 25px;
+        }
+        h3{
+            font-size: 25px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+        .ich-p{
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .bosh-div{
+            display: flex;
+            gap: 45px;
+            margin-bottom: 70px;
+        }
+        .divlar-boshi-ichi-2{
+            padding: 33px 20px;
+            background-color: white;
+            width: 550px;
+            padding-right: 70px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            margin-top: -5px;
+            padding-left: 20px;
+        }
+        h5{
+            padding: 32px 20px;
+            font-size: 30px;
+        }
+        h4{
+            font-size: 25px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+        .ich-p-2{
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .tepa{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1070px;
+            }
+        footer{
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        @media(max-width:800px){
+            .katta-div{
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                padding: 20px;
+            }
+            
+            .bosh-div{
+                flex-direction: column;
+            }
+            .divlar-boshi-ichi{
+                width: 400px;
+            }
+            .divlar-boshi-ichi-2{
+                width: 400px;
+                align-items: center;
+                margin-left: 80px;
+            }
+            .tepa{
+                text-align: center;
+                display: table-column;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="tepa">
+        <div class="loga_div">SchoolPortal</div>
+        <div>
+            <a href="">Bosh Sahifa</a>
+            <a href="">Yangiliklar</a>
+            <a href="">O'qituvchilar</a>
+            <a href="">Kontakt</a>
+        </div>
+        </div>
+    </header>
+    <div class="katta-div">
+        <h1>Farzandingiz kelajagi biz bilan boshlanadi</h1>
+        <p class="katta-div-p">Rasmiy maktab axborot platformasi</p>
+    </div>
+    <div class="bosh-div">
+    <div class="divlar-boshi">
+        <h2>🎉Yangiliklar</h2>
+        <div class="divlar-boshi-ichi">
+            <h3>Yangi o'quv yili boshlandi</h3>
+            <p class="ich-p">2026-yil uchun darslar 5-sentabrdan boshlanadi.</p>
+        </div>
+        <div class="divlar-boshi-ichi">
+            <h3>Olimpiada natijalari</h3>
+            <p class="ich-p">Bizning o'quvchilarimiz matematika bo'yicha 1-o'rinni oldi.</p>
+        </div>
+        <div class="divlar-boshi-ichi">
+            <h3>Sport musobaqasi</h3>
+            <p class="ich-p">Maktablar aro fudbol turniri bo'lib o'tdi.</p>
+        </div>
+    </div>
+    <div class="divlar-boshi-2">
+        <h5>E'lonlar</h5>
+        <div class="divlar-boshi-ichi-2">
+            <h4>E'lonlar</h4>
+            <p class="ich-p-2">Parent meeting:25-aprel</p>
+        </div>
+        <div class="divlar-boshi-ichi-2">
+            <h4>O'qituvchilar</h4>
+            <p class="ich-p-2">25+ professional pedagog</p>
+        </div>
+        <div class="divlar-boshi-ichi-2">
+            <h4>O'quvchilar</h4>
+            <p class="ich-p-2">1200+ faol o'quvchi</p>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="quti">
+            <p>Toshkent,Uzbekistan</p>
+            <p>Tel:+998 90 123 4567</p>
+            <p>&copy;2026 SchoolPortal</p>
+        </div>
+    </footer>
+</body>
+</html>

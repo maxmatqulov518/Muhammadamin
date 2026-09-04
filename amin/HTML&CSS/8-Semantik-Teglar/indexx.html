@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: linear-gradient(100deg, skyblue, yellow, orange);
+            color: #010546a6;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px #666;
+            padding: 20px;
+            text-align: center;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color:rgb(1, 5, 51);
+            color:#010546a6 ;
+            line-height: 1.6;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            background-color: #010546a6;
+            padding: 14px;
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6366f1;
+        }
+
+        nav a:hover {
+            color: #e85cf5;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        #quti {
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        #maqolalar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        article {
+            background-color: #010546a6;           
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+            width: 90%;
+        }
+
+        article h3 {
+            color: #4f46e5;
+        }
+
+        img {
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .paragraph {
+            height: 100px;
+            text-align: start;
+        }
+
+        figure {
+            margin: 10px;
+        }
+
+        figcaption {
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        aside {
+            background-color: #010546a6;
+            padding: 20px;
+            border-radius: 16px;
+            color: white;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background-color: #010546a6;
+            color: white;
+        }
+
+        .quticha {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Texno Jurnal</h1>
+        <p>Texnologiya va dasturlash yangiliklari</p>
+    </header>
+    <nav>
+        <a href="">Bosh Shifa</a>
+        <a href="">AI</a>
+        <a href="">Dasturlash</a>
+        <a href="">Startaplar</a>
+    </nav>
+    <main>
+        <section id="quti">
+            <section id="maqolalar">
+                <article>
+                    <h3>Suniy intellekt rivoji</h3>
+                    <p class="quticha"><time datetime="2026-04-10">April 10, 2026</time></p>
+                    <figure>
+                        <p class="paragraph">Suniy intilikt bugungi kunda tibbiyot,talim va biznes sohalarini tez
+                            o'zgartirmoqda.Suniyintellekt yordamida bu sohalarda avval
+                            imkoni bo'lmaganyangidan-yangikashfiyotlaramalga oshirilmoqda.
+                        </p>
+                        <img src="dasturchi.png" alt="Person working remotely">
+                        <figcaption>Working from home has become increasingly popular</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h3>Frontend dasturchi tili</h3>
+                    <p class="quticha"><time datetime="2026-04-05">April 5, 2026</time></p>
+                    <figure>
+                        <p class="paragraph">HTML,CSS va JavaScript o'rganish orqali sizzamonaviy veb-saydlar
+                            yaratishingiz mumkin.Amaliyotbilan o'rganish - bu o'rganish-ning
+                            eng yaxshi uslubihisoblanadi.
+                        </p>
+                        <img src="velosped.png" alt="Travel destination">
+                        <figcaption>A beautiful travel destination</figcaption>
+                    </figure>
+                </article>
+            </section>
+        </section>
+        <aside>
+            <h2>Trend Mavzular</h2>
+            <h2>haqida</h2>
+            <p>City Life Jurnali har kuni sayohat turmush
+                tarzi va unimdorlik haqida malumotlar ulashadi
+            </p>
+        </aside>
+    </main>
+    <footer>
+        <p>&copy; City Life jurnali</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,547 @@
+*, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 100px;
+    align-items: center;
+    
+
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    font-size: 22px;
+}
+header .tugma{
+    width: 120px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 20px;
+    
+
+}
+header .logo{
+    width: 200px;
+    height: 60px;
+}
+
+
+.markaz{
+    
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding: 20px 50px;
+}
+.mini-markaz{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.katta-rasm img{
+    width: 570px;
+    height:400px;
+}    
+ .h1{
+    font-size: 45px;
+    
+
+}
+.mp{
+    font-size: 18px;
+    color: gray;
+    margin-top: 30px;
+}
+.spp{
+   
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    text-shadow: 2px 2px 7px black;
+}
+
+.sp{
+    color: black;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    text-shadow: 2px 2px 7px black;
+}
+.mini{
+    width: 70px;
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: white;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 5px;
+}
+.mini img{
+    width: 60px;
+    height: 60px;
+}
+.mini-divlar{
+   display: flex;
+   gap: 20px;
+   margin-top: 20px;
+
+}
+.minin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    border-radius: 5px;
+    width: 70px;
+    height: 70px;
+
+}
+.minin img{
+    width: 60px;
+    height: 60px;
+}
+
+.my-skils{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+   padding: 20px;
+  
+}
+.div-8{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 90%;
+    margin: 70px  auto;
+
+}
+.divcha{
+    border: 1px solid rgb(0, 0, 0);
+    margin: auto;
+    width: 150px;
+    height: 140px;
+    padding: 27px 0;
+    border-radius: 4px;
+}
+.divcha img{
+    width: 60px;
+}
+.divchaa{
+    border: 1px solid rgb(0, 0, 0);
+    margin: auto;
+    width: 150px;
+    padding: 27px 0;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    height: 140px;
+}
+.divchaa img{
+    width: 60px;
+    
+}
+.h33{
+    font-size: 26px;
+}
+.divcha h3{
+    font-size: 26px;
+}
+
+.div-9{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 90%;
+    margin:auto;
+
+}
+.divchaaa{
+    
+    border: 1px solid rgb(0, 0, 0);
+    margin: auto;
+    width: 150px;
+    padding: 27px 0;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    height: 140px;
+}
+.divchaaa img{
+    width: 60px;
+    
+}
+.h33{
+    font-size: 26px;
+}
+.divchaaa h3{
+    font-size: 26px;
+}
+.my-h1{
+    text-align: center;
+    font-size: 40px;
+}
+.youtube{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: black;
+    
+}
+.bu-katta-h1{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+.bu-katta-h1 span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+}
+.div-3{
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 100px;
+}
+.mini-div-time{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.mini-div-time h2{
+    font-size: 30px;
+   
+    color: white;
+}
+.bu-katta-p{
+    font-size: 22px;
+    color: white;
+}
+.bobo-p{
+    color:white ;
+    font-size: 22px;
+    margin-top: 30px;
+}
+.divlar-time1{
+    border: 1px solid white;
+    padding: 15px;
+    border-radius: 10px;
+
+}
+.divlar-time2{
+    border: 1px solid white;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #27272A;
+}
+.divlar-time3{
+    border: 1px solid white;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 10px;
+}
+.bu-katta-odam{
+    display: flex;
+    flex-direction: row;
+    padding: 30px 100px;
+}
+.bu-katta-odam img{
+    height: 400px;
+}
+.orabturuvchi-div{
+   display: flex;
+   flex-direction: row;
+   gap: 80px;
+}
+.bu-juda-katta-h1{
+    font-size: 50px;
+}
+.bu-juda-katta-h1 span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 200;
+}
+.ppp111{
+    margin-top: 20px;
+    color: gray;
+}
+.asabbuzildi{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: black;
+}
+.mol-pro{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 30px 60px;
+
+}
+.mol-pro img{
+    height: 500px;
+}
+.bu-mol{
+    margin-top: 20px;
+    height: 310px;
+    margin-top: 90px;
+
+
+}
+.bu-mol h2{
+    font-size: 40px;
+    color: white;
+    
+}
+.bu-mol h1{
+    font-size: 35px;
+    color: white;
+   margin-top: 20px;
+   
+}
+.bu-mol p{
+    color: gray;
+    font-size: 22px;
+   margin-top: 30px;
+
+}
+.eng-past{
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+   text-align: center;
+   padding: 20px 50px;
+}
+.div33{
+    display: flex;
+    flex-direction: row;
+    
+    gap: 20px;
+    margin: auto;
+    margin-top: 60px;
+
+
+}
+.rasmlar3{
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 5px rgb(95, 95, 95);
+    padding: 15px;
+}
+.rasmlar3 img{
+    width: 70px;
+    height: 70px;
+    margin-top: 30px;
+}
+.songi-p{
+    width: 210px;
+    margin-top: 20px;
+    color: gray;
+}
+
+.rasmlar3 h4{
+    font-size: 22px;
+    color: rgb(90, 90, 90);
+    margin-top: 13px;
+}
+.rasmlar3 h5{
+    font-size: 20px;
+    color: gray;
+    margin-top: 10px;
+}
+.cilr{
+    width: 120px;
+    background-color:white;
+    height: 1.5px;
+    margin-top: 10px;
+    
+}
+.rasmlar32{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 5px rgb(95, 95, 95);
+    background-color: black;
+    padding: 15px;
+}
+.cil{
+    width: 120px;
+    background-color: rgb(83, 83, 83);
+    height: 1.5px;
+    margin-top: 10px;
+
+}
+.rasmlar32 h4{
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    margin-top: 13px;
+}
+.rasmlar32 h5{
+    font-size: 20px;
+    color: gray;
+    margin-top: 10px;
+}
+.rasmlar32 img{
+    width: 70px;
+    height: 70px;
+    margin-top: 30px;
+}
+
+
+.katta{
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.chap-katta {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.chap-katta textarea{
+    width: 100%;
+    padding:18px;
+    border:2px solid #000;
+    border-radius:8px;
+    outline:none;
+    font-size:16px;
+}
+input{
+    height: 40px;
+    padding: 15px;
+}
+
+
+
+.buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.buttons button{
+    padding:15px 35px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.buttons a{
+    width:45px;
+    height:45px;
+    border:2px solid #000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:8px;
+    color:#000;
+    text-decoration:none;
+}.quti-ong{
+    width:45%;
+}
+
+.quti-ong h2{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.quti-ong p{
+    color:#666;
+    line-height:28px;
+    margin-bottom:30px;
+}
+
+.quti-ong h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.quti-ong h4{
+font-size:28px;
+}
+.fesbuk{
+    background-color: black;
+    width: 70px;
+    height: 65px;
+    border-radius: 10px;
+    align-items: center;
+    padding: 8px;
+}
+.fesbuk img{
+    width: 50px;
+   
+}
+footer{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    padding: 20px 60px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+footer img{
+    width: 140px; 
+    height:60px ;
+}
+footer h6{
+    font-size: 22px;
+}
+footer p{
+    font-size: 22px;
+}
+
+
+@media(max-width:768px){
+
+.katta{
+    flex-direction:column;
+}
+
+.chap-katta,
+.quti-ong{
+    width:100%;
+}

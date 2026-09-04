@@ -1,0 +1,95 @@
+*,
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background: linear-gradient(135deg,#6366f1,#e85cf5);
+    color: white;
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px #666;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg,#eef2ff,#fdfbff);
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+header h1{
+    font-size: 2rem;
+}
+nav{
+    display: flex;
+    gap: 15px;
+    background-color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+nav a{
+    text-decoration: none;
+    color: #6366f1;
+}
+nav a:hover{
+    color:#e85cf5;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+#quti{
+    background-color: white;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#maqolalar{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+article{
+    background-color: #f9fafb;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+    width: 50%;
+}
+article h3{
+    color: #4f46e5;
+}
+img{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.paragraph{
+    height: 100px;
+    text-align: start;
+}
+figure{
+    margin: 10px;
+}
+figcaption{
+    font-size: 12px;
+    font-style: italic;
+}
+aside{
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+}
+footer{
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #1f2937;
+    color: white;
+}

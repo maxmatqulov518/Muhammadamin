@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Travel Journal</title>
+<style>
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .page{
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .masthead{
+    color: #fff;
+    text-align: center;
+    padding: 26px 24px;
+    background-color: rgb(219, 71, 71);
+  }
+  .brand{
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+  main{
+    padding: 34px 40px 10px;
+  }
+  .entry{
+    display:flex;
+    gap: 26px;
+    padding: 40px 0;
+  }
+  .entry:first-child{ padding-top: 0; }
+  .entry .photo{
+    flex: 0 0 240px;
+    height: 320px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .entry .photo img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+  }
+  .entry .content{
+    flex: 1;
+    min-width: 0;
+    padding-top: 6px;
+  }
+  .meta-row{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    margin: 0 0 10px;
+  }
+  .pin{
+    font-size: 13px;
+    margin: 0;
+  }
+  .country{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0;
+  }
+  .maps-link{
+    font-size: 13px;
+    margin: 0 0 0 8px;
+  }
+  .title{
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0 0 18px;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .dates{
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .desc{
+    font-size: 15px;
+    line-height: 1.6;
+    color: #423F4E;
+    margin:0;
+    max-width: 46ch;
+  }
+  @media (max-width: 560px){
+    .entry{ flex-direction: column; }
+    .entry .photo{ flex-basis: auto; width:100%; height: 220px; }
+    main{ padding: 26px 20px; }
+    .title{ font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <p class="brand">🌍 my travel journal.</p>
+  </header>
+  <main>
+    <article class="entry">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=480&q=80" alt="Mount Fuji">
+      </div>
+      <div class="content">
+        <div class="meta-row">
+          <p class="pin">📍</p>
+          <p class="country">Japan</p>
+          <a class="maps-link" href="#">View on Google Maps</a>
+        </div>
+        <p class="title">Mount Fuji</p>
+        <p class="dates">12 Jan, 2023 - 24 Jan, 2023</p>
+        <p class="desc">Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists.</p>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1524293581917-878a6d017c71?w=480&q=80" alt="Sydney Opera House">
+      </div>
+      <div class="content">
+        <div class="meta-row">
+          <p class="pin">📍</p>
+          <p class="country">Australia</p>
+          <a class="maps-link" href="#">View on Google Maps</a>
+        </div>
+        <p class="title">Sydney Opera House</p>
+        <p class="dates">27 May, 2023 - 8 Jun, 2023</p>
+        <p class="desc">The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings.</p>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1601439678777-b2b3c56fa627?w=480&q=80" alt="Geirangerfjord">
+      </div>
+      <div class="content">
+        <div class="meta-row">
+          <p class="pin">📍</p>
+          <p class="country">Norway</p>
+          <a class="maps-link" href="#">View on Google Maps</a>
+        </div>
+        <p class="title">Geirangerfjord</p>
+        <p class="dates">01 Oct, 2024 - 18 Nov, 2024</p>
+        <p class="desc">The Geiranger Fjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality.</p>
+      </div>
+    </article>
+  </main>
+</div>
+</body>
+</html>
